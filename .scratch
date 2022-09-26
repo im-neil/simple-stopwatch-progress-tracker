@@ -1,0 +1,8 @@
+Stopwatch forked from -- https://github.com/tinloof/gold-stopwatch
+
+Optimize and download SVG files at https://jakearchibald.github.io/svgomg/
+
+- Inspect Element on desired SVG
+- Copy Element
+- Paste Markup
+- Download
