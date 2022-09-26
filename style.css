@@ -76,3 +76,11 @@ button {
 #pauseButton {
   display: none;
 }
+
+#stopButton {
+  display: block;
+}
+
+#resetButton {
+  display: none;
+}

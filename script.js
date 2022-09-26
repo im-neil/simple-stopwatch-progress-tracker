@@ -42,11 +42,13 @@ function start() {
     print(timeToString(elapsedTime))
   }, 10)
   showButton('PAUSE')
+  showButton('STOP')
 }
 
 function pause() {
   clearInterval(timerInterval)
   showButton('PLAY')
+  showButton('RESET')
 }
 
 function reset() {
@@ -54,6 +56,7 @@ function reset() {
   print('00:00:00')
   elapsedTime = 0
   showButton('PLAY')
+  showButton('STOP')
 }
 
 function plus() {
@@ -74,15 +77,30 @@ function zero() {
 // Create function to display buttons
 
 function showButton(buttonKey) {
-  const buttonToShow = buttonKey === 'PLAY' ? playButton : pauseButton
-  const buttonToHide = buttonKey === 'PLAY' ? pauseButton : playButton
-  buttonToShow.style.display = 'block'
-  buttonToHide.style.display = 'none'
+  switch (buttonKey) {
+    case 'PLAY':
+      playButton.style.display = 'block'
+      pauseButton.style.display = 'none'
+      break
+    case 'PAUSE':
+      pauseButton.style.display = 'block'
+      playButton.style.display = 'none'
+      break
+    case 'STOP':
+      stopButton.style.display = 'block'
+      resetButton.style.display = 'none'
+      break
+    case 'RESET':
+      resetButton.style.display = 'block'
+      stopButton.style.display = 'none'
+      break
+  }
 }
 // Create event listeners
 
 let playButton = document.getElementById('playButton')
 let pauseButton = document.getElementById('pauseButton')
+let stopButton = document.getElementById('stopButton')
 let resetButton = document.getElementById('resetButton')
 let plusButton = document.getElementById('plusButton')
 let minusButton = document.getElementById('minusButton')
@@ -90,6 +108,7 @@ let zeroButton = document.getElementById('zeroButton')
 
 playButton.addEventListener('click', start)
 pauseButton.addEventListener('click', pause)
+stopButton.addEventListener('click', pause)
 resetButton.addEventListener('click', reset)
 plusButton.addEventListener('click', plus)
 minusButton.addEventListener('click', minus)
